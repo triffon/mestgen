@@ -1,0 +1,434 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[left=2cm,top=2cm,right=2cm,nohead,nofoot]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{indentfirst}
+%\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[unicode, colorlinks=true, naturalnames=true, linkcolor=blue]{hyperref}
+\usepackage{ifpdf}
+\usepackage{eso-pic}
+
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\title{Тест по нещо}
+\date{\today}
+
+\begin{document}
+%Notes:
+%	трябва не трябва -> не трябва 
+%	някви омазани безкрайности има някъде
+
+
+\lstset{
+	inputencoding=utf8x, 
+	extendedchars=\true,
+	basicstyle=\small\ttfamily,
+	keywordstyle=\color{blue!50!black},
+	commentstyle=\color{gray},
+	tabsize=4,
+	showstringspaces=false,
+	language=Java,
+	backgroundcolor=\color{red!20!blue!8!white},
+%	frameround=tttt,
+	frame=shadowbox,
+%	framexleftmargin=5mm,
+	framerule=1pt,
+	rulesepcolor=\color{red!20!blue!40!white}
+}
+
+\ClearShipoutPicture
+\AddToShipoutPicture{\includegraphics[width=3cm,height=4.5cm]{color-pooh.png}}
+
+\AddToShipoutPicture{\includegraphics[width=\paperwidth,height=\paperheight]{pooh2.png}}
+
+
+%\newcommand{\code}[1]{%
+%	\lstset{basicstyle=\ttfamily}%
+%	\lstinline{#1}%
+%	\lstset{basicstyle=\tiny\ttfamily}%
+%}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\noop}{ }
+\newcommand{\todo}[1]{}
+%use to enable english hyphenation
+\newcommand{\en}[1]{\selectlanguage{english}#1\selectlanguage{bulgarian}} 
+
+
+
+
+
+\newcommand{\bs}{\char '134}
+
+\newcommand{\ig}{ѝ }	
+
+
+%\maketitle
+
+%\setcounter{tocdepth}{3}
+%\tableofcontents
+
+%\newenvironment{\test}{
+%\begin{enumerate}
+%}
+%{
+%\end{enumerate}
+%}
+
+
+% mest commands - the generator recognizes them only on begginning of a line!
+
+\newenvironment{test}
+	{\begin{enumerate}}
+	{\end{enumerate}}
+
+
+\newcommand{\startQuestion}{
+	\item
+}
+
+%you may want endQuestion, but it wont work :)
+\newcommand{\finishQuestion}{
+	\end{enumerate}
+}
+
+\newcommand{\answers}{
+\begin{enumerate} 
+\setlength{\topsep}{-2mm} 
+\setlength{\itemsep}{0mm} 
+}
+
+
+
+\newcommand{\question}[2]{
+\startQuestion
+	#1
+\answers
+	#2
+\finishQuestion
+
+}
+
+\newcommand{\wrong}{\item}
+\newcommand{\correct}{\item(+) }
+\newcommand{\ts}{\ \hspace{5.5mm}\ }
+
+\newcommand{\postCorrect}{\item}
+\newcommand{\postWrong}{\item}
+\newcommand{\tableExtra}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mest instructions are here
+% !!max_questions=25!! -- how many questions will the variants have
+% !!max_answers=5!! -- how many answers will each question have
+% !!file_prefix=mestology-sample1-!! -- all generated file names begin with this prefix
+%		dont know what will happen if you put directory here
+% !!variants=8!! -- how many variants will be present
+%		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{center}
+{\Large\textbf{Местология}} %the name of the course
+
+Тест 0 – 32 юни 2007 % the name/date of the test
+
+Вариант !!variant!! % which variant will be present
+\end{center} 
+% the information to be filled from the student
+Трите имена: ....................................................................................................   Курс: ..... Фак. номер: ....................
+% the table to fill answers. Note that in generated answers \tableExtra is replaced with the answers
+\begin{tabular}{|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+\hline
+&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20&21&22&23&24&25\\
+\hline
+ \tableExtra
+\hline
+!!v!!&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts&\ts\\
+\hline
+\end{tabular} 
+
+
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{0cm} 
+\setlength{\baselineskip}{0cm} 
+\setlength{\itemsep}{-1cm} 
+
+
+\begin{test}
+\question{Местологията е:}{
+	\wrong част от комплексния анализ.
+	\wrong супер наука.
+	\wrong ултра-мега-токат звеска наука.
+	\wrong наука за глобалното затопляне.
+	\wrong наука за геополитическите конфликти резултиращи от масовата балканизация на канарските острови.
+	\wrong част от СЕП.
+	\wrong NP-пълна.
+	\wrong NP-празна.
+	\correct измислена наука по името на генератора.
+	\correct менте наука.
+	\correct наука за генератора mest.
+}
+\question{Mest генератора изисква:}{
+	\wrong .Net framework.
+	\wrong Microsoft Visual Studio 2009
+	\wrong Windows Vista.
+	\wrong NakovTestGenerator.
+	\wrong Microsoft Office.
+	\wrong да има vi и да няма emacs.
+	\wrong да има emacs и да няма vi.
+	\wrong DOS 6.22.
+	\wrong Python.
+	\wrong нито едно от посочените.
+	\correct Perl.
+	\correct pdflatex.
+	\correct Perl и pdflatex.
+}
+\question{Въпросите в един mest test започват с: }{
+	\wrong списък.
+	\wrong таблица.
+	\wrong с \texttt{{\bs}mestQuest}
+	\wrong с \texttt{{\bs}Question}
+	\wrong с \texttt{{\bs}quest}
+	\wrong с \texttt{Question.}
+	\wrong празен ред
+	\wrong \texttt{{\bs}q}
+	\correct с \texttt{{\bs}question}
+	\correct нито едно от посочените.
+}
+\question{
+Какъв е резултатът от{$ \displaystyle \sum_{i=1}^{3} i $ }?
+}{
+	\wrong  1
+	\wrong  2
+	\wrong  3
+	\wrong  4
+	\wrong  5
+	\correct 6
+	\correct $\frac{12}{2}$
+	\correct $2+2^2$
+}
+\startQuestion
+	Даден е следният програмен фрагмент:
+
+\begin{lstlisting}
+public static void main(String[] args){
+	i ate that fish;
+}
+
+\end{lstlisting}
+
+Това лошо ли е?
+
+\answers
+	\wrong не
+	\wrong това е страхотно
+	\wrong това рути
+	\wrong съвсем не
+	\wrong изобщо
+	\correct да
+	\correct много
+	\correct зависи
+\finishQuestion
+\question{
+	Дали ще стане теста над една страница?
+}{
+	\wrong не
+	\wrong нито едно от изброените
+	\correct да
+}
+\question{
+	Кой направи mest?
+}{
+	\wrong Иван
+	\wrong Георги
+	\wrong Станчо
+	\wrong Stancho
+	\wrong Мишо
+	\wrong Пешо
+	\correct Мило
+	\correct този който написа това
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	менте?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\end{test}
+
+
+Време за работа: 75 минути. \footnote{!!note!!}
+
+
+\end{document}
+
+
