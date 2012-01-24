@@ -107,7 +107,7 @@
 \newcommand{\openQuestion}[2][2cm]{
 \startQuestion
 #2
-\vspace{#1}
+\vspace*{#1}
 }
 
 \newcommand{\question}[2]{
@@ -118,6 +118,9 @@
 \finishQuestion
 
 }
+
+\newcommand{\startAlternatives}{}
+\newcommand{\finishAlternatives}{}
 
 \newcommand{\wrong}{\item}
 \newcommand{\correct}{\item(+) }
@@ -261,8 +264,9 @@ public static void main(String[] args){
 	\correct Мило
 	\correct този който написа това
 }
+\startAlternatives
 \question{
-	менте?
+	едно менте?
 }{
 	\wrong не
 	\wrong false
@@ -271,7 +275,7 @@ public static void main(String[] args){
 }
 \openQuestion[6cm]{Напишете ода за местологията в тристъпен ямб (не повече от 6 строфи).}
 \question{
-	менте?
+	две ментета?
 }{
 	\wrong не
 	\wrong false
@@ -279,13 +283,14 @@ public static void main(String[] args){
 	\correct true
 }
 \question{
-	менте?
+	три ментета?
 }{
 	\wrong не
 	\wrong false
 	\correct да
 	\correct true
 }
+\finishAlternatives
 \question{
 	менте?
 }{
@@ -343,14 +348,72 @@ public static void main(String[] args){
 	\correct да
 	\correct true
 }
+\startAlternatives
 \question{
-	менте?
+	едно менте?
 }{
 	\wrong не
 	\wrong false
 	\correct да
 	\correct true
 }
+\question{
+	две ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	три ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	четири ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	пет ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	шест ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	седем ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\question{
+	осем ментета?
+}{
+	\wrong не
+	\wrong false
+	\correct да
+	\correct true
+}
+\finishAlternatives
 \question{
 	менте?
 }{
