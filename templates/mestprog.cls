@@ -172,6 +172,7 @@
   \begin{center}
     {\Large\textbf{#1}\\
       \textit{#2}} %the name of the course
+
     Тест --- #3 % the name/date of the test
 
     Вариант #4 % which variant will be present
@@ -192,6 +193,13 @@
     \hline
   \end{tabular}
 \end{center}
+
+% setup spacing
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{0cm}
+\setlength{\baselineskip}{3mm}
+\setlength{\itemsep}{-1cm}
+
 }
 
 % setup MEST footer
@@ -206,9 +214,3 @@
   Време за работа: #3 минути.
   \footnote{#4}
 }
-
-% setup spacing
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{0cm}
-\setlength{\baselineskip}{3mm}
-\setlength{\itemsep}{-1cm}
