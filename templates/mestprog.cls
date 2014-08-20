@@ -6,11 +6,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mestprog}[2014/08/17 v0.9 MEST programming template]
-\LoadClass[a5paper,10pt]{report}
+\ProvidesClass{mestprog}[2014/08/17 v0.9.1 MEST programming template]
+
+% support for A5 format
+\DeclareOption{a5paper}{
+  \PassOptionsToClass{\CurrentOption}{report}
+  \PassOptionsToPackage{left=1cm,top=1cm,right=1cm,bottom=1cm,nohead,foot=0.5cm}{geometry}
+}
+
+% support for A4 format
+\DeclareOption{a4paper}{
+  \PassOptionsToClass{\CurrentOption}{report}
+  \PassOptionsToPackage{left=2cm,top=2.5cm,right=2cm,bottom=1.5cm,nohead,nofoot}{geometry}
+}
+
+% set defaults
+\ExecuteOptions{a5paper}
+
+% use user-defined options
+\ProcessOptions
+
+% load base class
+\LoadClass[10pt]{report}
 
 % setup page geometry
-\RequirePackage[left=1cm,top=1cm,right=1cm,bottom=1cm,nohead,foot=0.5cm]{geometry}
+\RequirePackage{geometry}
 
 % setup fonts and encodings
 \RequirePackage[T2A]{fontenc}
