@@ -6,7 +6,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mestprog}[2014/08/17 v0.9.1 MEST programming template]
+\ProvidesClass{mestprog}[2014/08/21 v0.9.2 MEST programming template]
+
+% setup fonts and encodings
+\RequirePackage[T2A]{fontenc}
+\RequirePackage{ucs}
+\RequirePackage[utf8x]{inputenc}
+\RequirePackage[english,bulgarian]{babel}
+
+
 
 % support for A5 format
 \DeclareOption{a5paper}{
@@ -20,6 +28,53 @@
   \PassOptionsToPackage{left=2cm,top=2.5cm,right=2cm,bottom=1.5cm,nohead,nofoot}{geometry}
 }
 
+% void pts command will ignore any points settings unless option pts is selected
+\newcommand{\pts}[1]{}
+
+% setup MEST footer
+% #1 = time
+% #2 = !!note!!
+\newcommand{\mestfooter}[2]{
+  Време за работа: #1 минути.
+  \footnote{#2}
+}
+
+% support for points
+\DeclareOption{pts}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Points calculation %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% setup point calculation
+\AtEndOfClass{\RequirePackage{fp}}
+
+% convert from internal to external points (divide by 10)
+\newcommand{\topts}[1]{\FPeval{\result}{clip(#1/10)}\result}
+
+% set points for a question
+\renewcommand{\pts}[1]{\textbf{(\topts{#1} т.)}\addtocounter{points}{#1}}
+
+% setup points counter
+\newcounter{points}
+\setcounter{points}{0}
+
+% default point value for closed questions
+\newcommand{\defaultpts}{15}
+
+% setup MEST footer with points
+% #1 = minimum points
+% #2 = maximum points
+% #3 = time
+% #4 = !!note!!
+\renewcommand{\mestfooter}[4]{
+  Необходим минимум: #1 точки.\\
+  Признават се максимум: #2 точки.\\
+  Постижим максимум: \topts{\arabic{points}} точки.\\
+  Време за работа: #3 минути.
+  \footnote{#4}
+}
+}
+
 % set defaults
 \ExecuteOptions{a5paper}
 
@@ -31,12 +86,6 @@
 
 % setup page geometry
 \RequirePackage{geometry}
-
-% setup fonts and encodings
-\RequirePackage[T2A]{fontenc}
-\RequirePackage{ucs}
-\RequirePackage[utf8x]{inputenc}
-\RequirePackage[english,bulgarian]{babel}
 
 % setup source code listings
 % default language is C++
@@ -66,27 +115,6 @@
   \ClearShipoutPicture
   \AddToShipoutPicture{\includegraphics[width=3cm,height=3cm]{#1}}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Points calculation %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% setup point calculation
-\usepackage{fp}
-
-% convert from internal to external points (divide by 10)
-\newcommand{\topts}[1]{\FPeval{\result}{clip(#1/10)}\result}
-
-% set points for a question
-\newcommand{\pts}[1]{\textbf{(\topts{#1} т.)}\addtocounter{points}{#1}}
-
-% setup points counter
-\newcounter{points}
-\setcounter{points}{0}
-
-% default point value for closed questions
-\newcommand{\defaultpts}{15}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Various shortcuts %%%%%
@@ -220,17 +248,4 @@
 \setlength{\baselineskip}{3mm}
 \setlength{\itemsep}{-1cm}
 
-}
-
-% setup MEST footer
-% #1 = minimum points
-% #2 = maximum points
-% #3 = time
-% #4 = !!note!!
-\newcommand{\mestfooter}[4]{
-  Необходим минимум: #1 точки.\\
-  Признават се максимум: #2 точки.\\
-  Постижим максимум: \topts{\arabic{points}} точки.\\
-  Време за работа: #3 минути.
-  \footnote{#4}
 }
