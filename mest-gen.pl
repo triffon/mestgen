@@ -42,7 +42,7 @@ my $DIR = dirname(abs_path($0));
 
 my $TEMPLATES = "$DIR/templates";
 
-my $PDFLATEX = "TEXINPUTS=$TEMPLATES: pdflatex -halt-on-error -interaction=batchmode";
+my $PDFLATEX = "TEXINPUTS=\"$TEMPLATES\": pdflatex -halt-on-error -interaction=batchmode";
 	
 my %vars = (); #variables read from source
 
