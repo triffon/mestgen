@@ -115,6 +115,9 @@
   \ClearShipoutPicture
   \AddToShipoutPicture{\includegraphics[width=3cm,height=3cm]{#1}}
 }
+\newcommand{\mestbackground}[1]{
+\AddToShipoutPicture{\includegraphics[width=\paperwidth,height=\paperheight]{#1}}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Various shortcuts %%%%%

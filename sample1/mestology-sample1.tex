@@ -1,134 +1,14 @@
-\documentclass[a4paper,10pt]{report}
-\usepackage[left=2cm,top=2cm,right=2cm,bottom=1.5cm,nohead,nofoot]{geometry}
-\usepackage[T2A]{fontenc}
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage[english,bulgarian]{babel}
-\usepackage{indentfirst}
-%\usepackage{hyperref}
-\usepackage{xcolor}
-\usepackage{listings}
-\usepackage{graphicx}
-\usepackage[unicode, colorlinks=true, naturalnames=true, linkcolor=blue]{hyperref}
-\usepackage{ifpdf}
-\usepackage{eso-pic}
+\documentclass[pts,a4paper]{mestprog}
 
-\ifpdf
-  \DeclareGraphicsRule{*}{mps}{*}{}
-\fi
-
-\title{Тест по нещо}
-\date{\today}
-
-\begin{document}
-%Notes:
-%	трябва не трябва -> не трябва 
-%	някви омазани безкрайности има някъде
-
-
-\lstset{
-	inputencoding=utf8x, 
-	extendedchars=\true,
-	basicstyle=\small\ttfamily,
-	keywordstyle=\color{blue!50!black},
-	commentstyle=\color{gray},
-	tabsize=4,
-	showstringspaces=false,
-	language=Java,
-	backgroundcolor=\color{red!20!blue!8!white},
-%	frameround=tttt,
-	frame=shadowbox,
-%	framexleftmargin=5.5mm,
-	framerule=1pt,
-	rulesepcolor=\color{red!20!blue!40!white}
-}
-
-\ClearShipoutPicture
-\AddToShipoutPicture{\includegraphics[width=3cm,height=4.5cm]{color-pooh.png}}
-
-\AddToShipoutPicture{\includegraphics[width=\paperwidth,height=\paperheight]{pooh2.png}}
-
-
-%\newcommand{\code}[1]{%
-%	\lstset{basicstyle=\ttfamily}%
-%	\lstinline{#1}%
-%	\lstset{basicstyle=\tiny\ttfamily}%
-%}
-\newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\noop}{ }
-\newcommand{\todo}[1]{}
-%use to enable english hyphenation
-\newcommand{\en}[1]{\selectlanguage{english}#1\selectlanguage{bulgarian}} 
-
-
-
-
-
-\newcommand{\bs}{\char '134}
-
-\newcommand{\ig}{ѝ }	
-
-
-%\maketitle
-
-%\setcounter{tocdepth}{3}
-%\tableofcontents
-
-%\newenvironment{\test}{
-%\begin{enumerate}
-%}
-%{
-%\end{enumerate}
-%}
-
-
-% mest commands - the generator recognizes them only on begginning of a line!
-
-\newenvironment{test}
-	{\begin{enumerate}}
-	{\end{enumerate}}
-
-
-\newcommand{\startQuestion}{
-	\item
-}
-
-%you may want endQuestion, but it wont work :)
-\newcommand{\finishQuestion}{
-	\end{enumerate}
-}
-
-\newcommand{\answers}{
-\begin{enumerate} 
-\setlength{\topsep}{-2mm} 
-\setlength{\itemsep}{0mm} 
-}
-
-\newcommand{\openQuestion}[2][2cm]{
-\startQuestion
-#2
-\vspace*{#1}
-}
-
-\newcommand{\question}[2]{
-\startQuestion
-	#1
-\answers
-	#2
-\finishQuestion
-
-}
-
-\newcommand{\startAlternatives}{}
-\newcommand{\finishAlternatives}{}
-
-\newcommand{\wrong}{\item}
-\newcommand{\correct}{\item(+) }
-\newcommand{\ts}[1][]{\makebox[5mm]{#1}}
-
-\newcommand{\postCorrect}{\item}
-\newcommand{\postWrong}{\item}
-\newcommand{\tableExtra}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mestprog.cls options
+%
+% a4paper = use A4 paper
+% a5paper = use A5 paper (default)
+% pts = add support for points for each question. The maximum number of points
+% is automatically calculated and included in the end of the test. Points are
+% specified in tents, i.e., \pts{25} means 2.5 points
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % mest instructions are here
@@ -138,40 +18,28 @@
 %		dont know what will happen if you put directory here
 % !!variants=8!! -- how many variants will be present
 % !!srand=5!! -- random seed
-%		
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\bs}{\char '134}
 
-\begin{center}
-{\Large\textbf{Местология}} %the name of the course
+\begin{document}
 
-Тест 0 – 32 юни 2007 % the name/date of the test
+\mestheader
+  {Тест по Местология}          % course title
+  {спец. Многознайковци}        % course subtitle
+  {\today}                      % date
+  {!!v!!}
+  {!!spacing!!}
+  {!!numbers!!}
+  {!!boxes!!}
+  {\tableExtra}
 
-Вариант !!variant!! % which variant will be present
-\end{center} 
-% the information to be filled from the student
-Трите имена: ....................................................................................................   Курс: ..... Фак. номер: ....................
-% the table to fill answers. Note that in generated answers \tableExtra is replaced with the answers
-\newcommand{\columnFormat}{|@{}c@{}}
-
-\begin{tabular}{!!spacing!!|}
-\hline
-&!!numbers!!\\
-\hline
- \tableExtra
-\hline
-!!v!!!!boxes!!\\
-\hline
-\end{tabular} 
-
-
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{0cm} 
-\setlength{\baselineskip}{0cm} 
-\setlength{\itemsep}{-1cm} 
-
+\mestwatermark{color-pooh.png}
+\mestbackground{pooh2.png}
 
 \begin{test}
+
 \question{Местологията е:}{
 	\wrong част от комплексния анализ.
 	\wrong супер наука.
@@ -224,7 +92,7 @@
 	\correct $\frac{12}{2}$
 	\correct $2+2^2$
 }
-\startQuestion\label{mente}
+\startQuestion\label{mente}\pts{30}
 	Даден е следният програмен фрагмент:
 
 \begin{lstlisting}
@@ -274,7 +142,7 @@ public static void main(String[] args){
 	\correct да
 	\correct true
 }
-\openQuestion[6cm]{Напишете ода за местологията в тристъпен ямб (не повече от 6 строфи).}
+\openQuestion[6cm]{\pts{60}Напишете ода за местологията в тристъпен ямб (не повече от 6 строфи).}
 \question{
 	две ментета?
 }{
@@ -324,7 +192,7 @@ public static void main(String[] args){
 	\correct да
 	\correct true
 }
-\openQuestion{Какво бихте подобрили в mest? (1 изречение)}
+\openQuestion{\pts{18} Какво бихте подобрили в mest? (1 изречение)}
 \question{
 	менте?
 }{
@@ -497,10 +365,10 @@ public static void main(String[] args){
 }
 \end{test}
 
-
-Време за работа: 75 минути. \footnote{!!note!!}
-
+\mestfooter
+  {18} % minimum points
+  {35} % maximum points
+  {75} % time to work in minutes
+  {!!note!!}
 
 \end{document}
-
-

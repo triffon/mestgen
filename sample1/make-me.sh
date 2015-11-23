@@ -1,3 +1,3 @@
 #!/bin/bash
-#rm out/*
+rm -rf out
 ../mest-gen.pl mestology-sample1.tex
