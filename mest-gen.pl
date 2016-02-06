@@ -318,9 +318,11 @@ for(my $variant = 1; $variant <= $vc; ++$variant){
 	print $file $body;
 	close $file;
 
-	system "$PDFLATEX $fn > log";
+	system ("$PDFLATEX $fn > log") == 0
+            or die "Error while LaTeXing";
 	# run pdflatex once more to give it a chance to fix crossrefs
-	system "$PDFLATEX $fn >> log";
+	system ("$PDFLATEX $fn >> log") == 0
+            or die "Error while re-LaTeXing";
 }
 
 
@@ -343,4 +345,5 @@ open $file, ">$fn";
 print $file $body;
 close $file;
 
-system "$PDFLATEX $fn > log";
+system ("$PDFLATEX $fn > log") == 0
+    or die "Error while LaTeXing"
