@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mestprog}[2014/08/21 v0.9.2 MEST programming template]
+\ProvidesClass{mestprog}[2015/02/08 v0.9.3 MEST programming template]
 
 % setup fonts and encodings
 \RequirePackage[T2A]{fontenc}
@@ -113,7 +113,7 @@
 \RequirePackage{eso-pic}
 \newcommand{\mestwatermark}[1]{
   \ClearShipoutPicture
-  \AddToShipoutPicture{\includegraphics[width=3cm,height=3cm]{#1}}
+  \AddToShipoutPicture{\includegraphics[width=1.8cm,height=1.8cm]{#1}}
 }
 \newcommand{\mestbackground}[1]{
 \AddToShipoutPicture{\includegraphics[width=\paperwidth,height=\paperheight]{#1}}
@@ -230,7 +230,7 @@
   \end{center}
 
 % the information to be filled from the student
-Трите имена: .................................................................   Фак. номер: ..........................\\
+Трите имена: \hrulefill\hspace{1ex} Ф№ \rule{2.5cm}{.1pt}\\
 
 % the table to fill answers
 \begin{center}
