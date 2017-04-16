@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mestprog}[2015/02/08 v0.9.3 MEST programming template]
+\ProvidesClass{mestprog}[2017/04/16 v0.9.4 MEST programming template]
 
 % setup fonts and encodings
 \RequirePackage[T2A]{fontenc}
@@ -74,6 +74,9 @@
   \footnote{#4}
 }
 }
+
+% pass all unknown options to the base report class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 % set defaults
 \ExecuteOptions{a5paper}
