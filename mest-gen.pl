@@ -307,8 +307,8 @@ for(my $variant = 1; $variant <= $vc; ++$variant){
         # signifying that this TeX file is being compiled by mestgen
         # the flag is then used to enable parts of the header
         # that are otherwise disabled when the TeX file is not compiled under mestgen
-	$body =~ s/!!variant!!/\\mestgentrue\\ $v/g;
-	$body =~ s/!!v!!/\\mestgentrue\\ $v/g;
+	$body =~ s/!!variant!!/\\mestgentrue\{$v\}/g;
+	$body =~ s/!!v!!/\\mestgentrue\{$v\}/g;
 
 	$body =~ s/!!note!!/$NOTE/g;
 	$body =~ s/([^{])\\correct/$1\\postCorrect/g;
@@ -336,6 +336,8 @@ $body .= "\\item :p\n";
 $body .= $foot;
 
 my $ansText = "\\hline\n".(join '', @ansRows);
+$body =~ s/!!variant!!/\\mestgentrue */g;
+$body =~ s/!!v!!/\\mestgentrue */g;
 $body =~ s/\\tableExtra/$1$ansText/g;
 $body =~ s/!!note!!/$NOTE/g;
 $body =~ s/!!spacing!!/$columnsText/g;

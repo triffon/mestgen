@@ -197,8 +197,8 @@
 }
 
 % bogus commands for denoting question groups
-\newcommand{\startAlternatives}{}
-\newcommand{\finishAlternatives}{}
+\newcommand{\startAlternatives}{\item \begin{enumerate}}
+\newcommand{\finishAlternatives}{\end{enumerate}}
 
 % commands for wrong and correct answers (in the template)
 \newcommand{\wrong}{\item}
