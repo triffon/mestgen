@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mestprog}[2017/04/16 v0.9.4 MEST programming template]
+\ProvidesClass{mestprog}[2018/02/04 v0.9.5 MEST programming template]
 
 % setup fonts and encodings
 \RequirePackage[T2A]{fontenc}
@@ -223,6 +223,9 @@
 % #7 = !!boxes!!
 % #8 = \tableExtra
 \newcommand{\mestheader}[8]{
+  % define a comment environment
+  \newif\ifmestgen
+  \mestgenfalse
   \begin{center}
     {\Large\textbf{#1}\\
       \textit{#2}} %the name of the course
@@ -230,28 +233,28 @@
     Тест --- #3 % the name/date of the test
 
     Вариант #4 % which variant will be present
+
+    % the information to be filled from the student
+    Трите имена: \hrulefill\hspace{1ex} Ф№ \rule{2.5cm}{.1pt}\\
+
+    \ifmestgen
+    % the table to fill answers
+    % table will be included only if TeX file built under mestgen
+    \begin{tabular}{#5|}
+      \hline
+      &#6\\
+      \hline
+      #8
+      \hline
+      #4#7\\
+      \hline
+    \end{tabular}
+    \fi
   \end{center}
 
-% the information to be filled from the student
-Трите имена: \hrulefill\hspace{1ex} Ф№ \rule{2.5cm}{.1pt}\\
-
-% the table to fill answers
-\begin{center}
-  \begin{tabular}{#5|}
-    \hline
-    &#6\\
-    \hline
-    #8
-    \hline
-    #4#7\\
-    \hline
-  \end{tabular}
-\end{center}
-
-% setup spacing
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{0cm}
-\setlength{\baselineskip}{3mm}
-\setlength{\itemsep}{-1cm}
-
+  % setup spacing
+  \setlength{\parindent}{0mm}
+  \setlength{\parskip}{0cm}
+  \setlength{\baselineskip}{3mm}
+  \setlength{\itemsep}{-1cm}
 }
