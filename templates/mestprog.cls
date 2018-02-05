@@ -95,7 +95,6 @@
 \RequirePackage{listings}
 \lstset{
 	inputencoding=utf8x,
-	extendedchars=\true,
 	basicstyle=\small\ttfamily,
 	keywordstyle=\color{blue!50!black},
 	commentstyle=\color{gray},
@@ -105,7 +104,13 @@
 	backgroundcolor=\color{white},
 	frame=shadowbox,
 	framerule=1pt,
-	rulesepcolor=\color{gray}
+	rulesepcolor=\color{gray},
+        columns=fullflexible,
+        keywordstyle=\color{blue},
+        extendedchars=false,
+        texcl=true,
+        escapechar=@,
+        keepspaces=true
 }
 
 
